@@ -36,5 +36,7 @@ func _physics_process(delta):
 		direction.x = Input.get_action_strength("Forwards") - Input.get_action_strength("Backwards")
 		
 		direction = direction.rotated(rotation)
+		
+	print(direction)
 	velocity = direction * speed * delta
 	move_and_slide(velocity)
