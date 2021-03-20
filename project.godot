@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://src/Guns/Bullet.gd"
+"path": "res://src/Weapons/Bullet.gd"
 }, {
 "base": "Node2D",
 "class": "Gun",
 "language": "GDScript",
-"path": "res://src/Guns/Gun.gd"
+"path": "res://src/Weapons/Weapon.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -33,7 +33,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Greg"
+run/main_scene="res://src/Game/TestGame.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GlobalSignals="*res://src/Globals/GlobalSignals.gd"
 
 [display]
 
