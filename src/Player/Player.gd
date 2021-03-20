@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var gamePad = true
 
 onready var turretSprite = $TurretSprite
+onready var gun = $TurretSprite/Gun
 
 var velocity = Vector2.ZERO
 var speed = 10000
@@ -26,7 +27,9 @@ func _physics_process(delta):
 	velocity = direction * speed * delta
 	move_and_slide(velocity)
 
-
+func _unhandled_input(event):
+	if event.is_action_released("shoot"):
+		gun.shoot()
 
 func move_tank_gamepad(direction):
 	var currentRotation = rotation
