@@ -28,6 +28,7 @@ texture = ExtResource( 2 )
 
 [node name="Gun" parent="TurretSprite" instance=ExtResource( 4 )]
 position = Vector2( 14, 0 )
+Fire_Rate = 10.0
 
 [node name="BaseCollider" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )

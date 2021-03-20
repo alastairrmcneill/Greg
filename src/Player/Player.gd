@@ -1,4 +1,6 @@
 extends KinematicBody2D
+class_name Player
+
 
 export var gamePad = true
 
@@ -28,7 +30,7 @@ func _physics_process(delta):
 	move_and_slide(velocity)
 
 func _unhandled_input(event):
-	if event.is_action_released("shoot"):
+	if event.is_action_pressed("shoot"):
 		gun.shoot()
 
 func move_tank_gamepad(direction):

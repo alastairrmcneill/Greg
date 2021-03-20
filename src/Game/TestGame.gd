@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var gun = $Player/TurretSprite/Gun
+onready var gun:Gun = $Player/TurretSprite/Gun
 onready var bulletManager = $BulletManager
 
 func _ready():
