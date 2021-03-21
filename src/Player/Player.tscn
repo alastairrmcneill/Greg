@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Tank Top.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Tank Base.png" type="Texture" id=3]
-[ext_resource path="res://src/Weapons/Weapon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Weapons/WeaponManager.gd" type="Script" id=4]
+[ext_resource path="res://src/Weapons/Pistol.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Weapons/MachineGun.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 11 )
@@ -14,9 +16,6 @@ extents = Vector2( 15, 11 )
 collision_layer = 2147483648
 collision_mask = 0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 gamePad = false
 
 [node name="BaseSprite" type="Sprite" parent="."]
@@ -26,9 +25,13 @@ texture = ExtResource( 3 )
 [node name="TurretSprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="Weapon" parent="TurretSprite" instance=ExtResource( 4 )]
-position = Vector2( 14, 0 )
-Fire_Rate = 5.0
+[node name="WeaponManager" type="Node2D" parent="TurretSprite"]
+position = Vector2( 13, 0 )
+script = ExtResource( 4 )
+
+[node name="Pistol" parent="TurretSprite/WeaponManager" instance=ExtResource( 5 )]
+
+[node name="MachineGun" parent="TurretSprite/WeaponManager" instance=ExtResource( 6 )]
 
 [node name="BaseCollider" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

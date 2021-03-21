@@ -30,9 +30,6 @@ func _physics_process(delta):
 	velocity = direction * speed * delta
 	move_and_slide(velocity)
 
-func _unhandled_input(event):
-	if event.is_action_released("shoot"):
-		weapon.shoot()
 
 func move_tank_gamepad(direction):
 	var currentRotation = rotation
@@ -70,7 +67,6 @@ func rotate_turret_gamepad(currentTurretRotation):
 	turretSprite.global_rotation = desiredRotation
 	
 	return turretSprite.global_rotation
-
 
 func move_tank_keyboard(direction):
 	var rotationDirection = Input.get_action_strength("RotateRight") - Input.get_action_strength("RotateLeft")
