@@ -30,6 +30,7 @@ position = Vector2( 13, 0 )
 script = ExtResource( 4 )
 
 [node name="Pistol" parent="TurretSprite/WeaponManager" instance=ExtResource( 5 )]
+ammo = 100
 
 [node name="MachineGun" parent="TurretSprite/WeaponManager" instance=ExtResource( 6 )]
 

@@ -1,33 +1,49 @@
 extends Node2D
 
-var currentWeaponIndex = 0
-var currentWeapon = null
+var currentWeaponIndex: int = 1
+var currentWeapon: Weapon = null
 var weapons: Array = []
 
+
 func _ready():
-	weapons = get_children()
-	for weapon in weapons: 
-		weapon.hide()
+	GlobalSignals.connect("weapon_out_of_ammo", self, "remove_weapon")
 	
-	currentWeapon = weapons[currentWeaponIndex]
-	currentWeapon.show()
+	set_weapon(currentWeaponIndex)
 	
 func _process(delta):
 	if Input.is_action_pressed("shoot"):
 		currentWeapon.shoot()
 	
 func _unhandled_input(event):
-	if event.is_action_released("Swap Weapon"):
-		swap_weapon()
+	pass
 		
-func swap_weapon():
-	if currentWeaponIndex == 0:
-		currentWeaponIndex = 1
-	else: 
-		currentWeaponIndex = 0
+func set_weapon(index: int):
+	weapons = get_children()
+	
+	for weapon in weapons:
+		weapon.hide()
 		
-	currentWeapon.hide()
+	currentWeaponIndex = index 
 	currentWeapon = weapons[currentWeaponIndex]
 	
 	currentWeapon.show()
-		
+	
+
+func add_weapon(weapon: Weapon):
+	weapons = get_children()
+	
+	if weapons.size() == 1:
+		add_child(weapon)
+	else:
+		remove_child(weapons[1])
+		add_child(weapon)
+	
+	set_weapon(1)
+	
+func remove_weapon(weapon: Weapon):
+	weapons = get_children()
+	if weapon in weapons:
+		remove_child(weapon)
+	
+	set_weapon(0)
+	
